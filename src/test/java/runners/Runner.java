@@ -8,7 +8,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "steps",
-        tags ="@Regression"
+        tags ="@Google",
+        dryRun = false,
+        monochrome = false
         //tags="" -->if you leave empty it will run everything in feature files
 )
 
