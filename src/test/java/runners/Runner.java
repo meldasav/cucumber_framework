@@ -10,7 +10,8 @@ import org.junit.runner.RunWith;
         glue = "steps",
         tags ="@Google",
         dryRun = false,
-        monochrome = false
+        monochrome = false,
+        plugin = {"html:target/cucumber-reports"}
         //tags="" -->if you leave empty it will run everything in feature files
 )
 

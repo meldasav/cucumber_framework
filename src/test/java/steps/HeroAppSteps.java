@@ -9,6 +9,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import pages.HeroAppPage;
+import pages.HeroOkuLoginPage;
 import utils.ActionsUtil;
 import utils.AlertHandler;
 import utils.Driver;
@@ -17,11 +18,13 @@ public class HeroAppSteps {
 
     WebDriver driver;
     HeroAppPage heroAppPage;
+    HeroOkuLoginPage heroOkuLoginPage;
 
     @Before
     public void setup() {
         driver = Driver.getDriver();
         heroAppPage = new HeroAppPage();
+        heroOkuLoginPage=new HeroOkuLoginPage();
     }
 
     @When("user clicks on {string} link")
@@ -72,6 +75,10 @@ public class HeroAppSteps {
             case "Delete":
                 heroAppPage.deleteElementButton.click();
                 break;
+            case "Login":
+            heroAppPage.loginButton.click();
+            break;
+
             default:
                 throw new NotFoundException("The button text is not defined properly in the feature file!!!");
         }
@@ -89,6 +96,7 @@ public class HeroAppSteps {
                     Assert.assertTrue(true);
                 }
                 break;
+
             default:
                 throw new NotFoundException("The button text is not defined properly in the feature file!!!");
         }
@@ -106,6 +114,7 @@ public class HeroAppSteps {
                 Assert.assertTrue(heroAppPage.contextMenuParagraph2.isDisplayed());
                 Assert.assertEquals(paragraphText, heroAppPage.contextMenuParagraph2.getText());
                 break;
+
             default:
                 throw new NotFoundException("The paragraph text is not defined properly in the feature file!!!");
         }

@@ -15,35 +15,21 @@ public class GoogleSteps {
     GoogleSearchPage googleSearchPage;
 
     @Before
-    public void setup() {
-
+    public void setup(){
         driver = Driver.getDriver();
         googleSearchPage = new GoogleSearchPage();
     }
 
-
-    @When("user searches for {string} on google")
-    public void user_searches_for_on_google(String key) {
+    //We will be writing our actual script steps here
+    @When("user searches for {string} on Google")
+    public void user_searches_for_on_Google(String key) {
+        //driver.findElement(By.name("q")).sendKeys(key + Keys.ENTER);
         googleSearchPage.searchInputBox.sendKeys(key + Keys.ENTER);
-
-    }
-
-    @Then("user should see {string} in the url")
-    public void user_should_see_in_the_url(String key) {
-        Assert.assertTrue(driver.getCurrentUrl().contains(key));
-
-    }
-
-    @Then("user should see {string} in the title")
-    public void user_should_see_in_the_title(String key) {
-        Assert.assertTrue(driver.getTitle().contains(key));
-
     }
 
 
-    @Then("user should see results are more than {int}")
-    public void userShouldSeeResultsAreMoreThan(long results) {
-    Assert.assertTrue(Long.parseLong(googleSearchPage.searchResult.getText().split(" ")[1].replaceAll(",", "")) > results);
-
+    @Then("user should see results are more than {long}")
+    public void userShouldSeeResultsAreMoreThan(long result) {
+        Assert.assertTrue(Long.parseLong(googleSearchPage.searchResult.getText().split(" ")[1].replace(",", "")) > result); // 10950000000
     }
 }
